@@ -1,2 +1,4 @@
 chrisapp
+pandas
+numpy
 pudb
