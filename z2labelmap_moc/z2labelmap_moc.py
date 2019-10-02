@@ -58,7 +58,7 @@ Gstr_synopsis = """
           created file:
 
             mkdir in out
-            python z2labelmap_moc.py    --random --seed 1                   \\
+            python z2labelmap_moc.py    --random --seed 1               \\
                                     --posRange 3.0 --negRange -3.0      \\
                                     in out
 
@@ -67,7 +67,7 @@ Gstr_synopsis = """
         * To analyze a file already located at 'in/zfile.csv', apply a 
           scaleRange and also filter out the lower 80\% of z-scores:
 
-            python z2labelmap_moc.py    --scaleRange 2.0 --lowerFilter 0.8  \\
+            python z2labelmap_moc.py --scaleRange 2.0 --lowerFilter 0.8 \\
                                     --negColor B --posColor R           \\
                                     in out
 
@@ -170,9 +170,9 @@ Gstr_synopsis = """
           also remove the lower 80 percent of zscores (this has the effect 
           of only showing the brightest 20 percent of zscores). 
 
-        python z2labelmap_moc.py    --scaleRange 2.0 --lowerFilter 0.8      \\
-                                --negColor B --posColor R               \\
-                                in out
+        python z2labelmap_moc.py --scaleRange 2.0 --lowerFilter 0.8      \\
+                                 --negColor B --posColor R               \\
+                                 in out
 
         Generate labelmap and also copy pre-calculated image set to output
         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -180,9 +180,9 @@ Gstr_synopsis = """
         * Analyze a file already located at ``in/zfile.csv`` and copy 
           pre-calculated image data
 
-        python z2labelmap_moc.py    --negColor B --posColor R               \\
-                                --imageSet ../data/set1                 \\
-                                in out
+        python z2labelmap_moc.py --negColor B --posColor R               \\
+                                 --imageSet ../data/set1                 \\
+                                 in out
 
 
 """
@@ -200,7 +200,7 @@ class Z2labelmap_moc(ChrisApp):
     TYPE                    = 'ds'
     DESCRIPTION             = 'Convert a file of per-structure z-scores to a FreeSurfer labelmap.'
     DOCUMENTATION           = 'http://wiki'
-    VERSION                 = '2.0.1'
+    VERSION                 = '2.0.2'
     ICON                    = '' # url of an icon image
     LICENSE                 = 'Opensource (MIT)'
     MAX_NUMBER_OF_WORKERS   = 1  # Override with integer value
@@ -531,12 +531,6 @@ class Z2labelmap_moc(ChrisApp):
         Define the CLI arguments accepted by this plugin app.
         """
 
-        self.add_argument("-v", "--verbosity",
-                            help        = "verbosity level for app",
-                            type        = str,
-                            dest        = 'verbosity',
-                            optional    = True,
-                            default     = "0")
         self.add_argument("-p", "--posRange",
                             help        = "positive range for random max deviation generation",
                             type        = float,
@@ -604,27 +598,6 @@ class Z2labelmap_moc(ChrisApp):
                             dest        = 'seed',
                             optional    = True,
                             default     = '')
-        self.add_argument('--version',
-                            help        = 'if specified, print version number',
-                            type        = bool,
-                            dest        = 'b_version',
-                            action      = 'store_true',
-                            optional    = True,
-                            default     = False)
-        self.add_argument('--man',
-                            help        = 'if specified, print man page',
-                            type        = bool,
-                            dest        = 'b_man',
-                            action      = 'store_true',
-                            optional    = True,
-                            default     = False)
-        self.add_argument('--meta',
-                            help        = 'if specified, print plugin meta data',
-                            type        = bool,
-                            dest        = 'b_meta',
-                            action      = 'store_true',
-                            optional    = True,
-                            default     = False)
 
     def manPage_show(self):
         """
