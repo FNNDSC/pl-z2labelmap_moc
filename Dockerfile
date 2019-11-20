@@ -27,6 +27,7 @@ FROM fnndsc/ubuntu-python3:latest
 MAINTAINER fnndsc "dev@babymri.org"
 
 ENV APPROOT="/usr/src/z2labelmap_moc"
+COPY ["data", "/usr/src/data"]
 COPY ["z2labelmap_moc", "${APPROOT}"]
 COPY ["requirements.txt", "${APPROOT}"]
 
