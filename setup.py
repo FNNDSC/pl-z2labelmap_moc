@@ -18,7 +18,7 @@ setup(
       name             =   'z2lablelmap_moc',
       # for best practices make this version the same as the VERSION class variable
       # defined in your ChrisApp-derived Python class
-      version          =   '2.4.2',
+      version          =   '2.4.3',
       description      =   'Convert lh/rh z-score vector to FreeSurfer labelmap', 
       long_description =   readme(),
       author           =   'Rudolph Pienaar',
